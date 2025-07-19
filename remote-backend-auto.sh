@@ -6,6 +6,7 @@ set -e
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Function to display error messages and exit
@@ -24,8 +25,18 @@ warning_msg() {
   echo -e "${YELLOW}$1${NC}"
 }
 
-# Configuration
-REGION="eu-west-1"
+# Function to display info messages
+info_msg() {
+  echo -e "${BLUE}$1${NC}"
+}
+
+# Check if AWS CLI is installed
+if ! command -v aws &> /dev/null; then
+  error_exit "AWS CLI is not installed. Please install it first: https://aws.amazon.com/cli/"
+fi
+
+# Default configuration
+REGION="${AWS_REGION:-eu-west-1}"  # Use AWS_REGION env var if set, otherwise default
 WORKSPACES=("dev" "test" "prod")
 STATE_DIR="$(pwd)/terraform.tfstate.d"
 
