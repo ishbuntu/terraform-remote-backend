@@ -51,21 +51,3 @@ This script automates the setup and management of Terraform remote backends usin
 ./remote-backend-auto.sh destroy
 ```
 
-## How It Works
-
-1. The script checks for existing backend.tf configuration or generates new unique names
-2. Creates and configures the S3 bucket with versioning and encryption
-3. Creates the DynamoDB table for state locking
-4. Sets up workspace folders in the S3 bucket
-5. Generates or updates the backend.tf file with the correct configuration
-6. Provides options to migrate existing state files to the remote backend
-
-## Security Features
-
-- Enables default encryption on S3 bucket (AES-256)
-- Configures versioning on S3 bucket to prevent state loss
-- Validates AWS credentials before performing operations
-
-## License
-
-MIT
