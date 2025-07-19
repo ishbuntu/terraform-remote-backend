@@ -14,8 +14,7 @@ crash.*.log
 *.tfvars.json
 
 # Ignore override files as they are usually used for local dev
-override.tf
-override.tf.json
+override.tf*
 *_override.tf
 *_override.tf.json
 
